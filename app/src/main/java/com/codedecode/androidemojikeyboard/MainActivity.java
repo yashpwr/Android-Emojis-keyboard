@@ -26,24 +26,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         rootView = findViewById(R.id.root_view);
         emojiImageView = findViewById(R.id.emoji_btn);
         submitButton = findViewById(R.id.submit_btn);
         mCheckBox = findViewById(R.id.use_system_default);
         emojiconEditText = findViewById(R.id.emojicon_edit_text);
         textView = findViewById(R.id.textView);
+
         emojIcon = new EmojIconActions(this, rootView, emojiconEditText, emojiImageView);
+
+        //Changing the Emoji Keyboard colors to match your app theme
+        //emojIcon = new EmojIconActions(this, rootView, emojiconEditText, emojiImageView, "#303F9F","#e8e8e8","#f4f4f4");
+
         emojIcon.ShowEmojIcon();
-        emojIcon.setIconsIds(R.drawable.ic_action_keyboard, R.drawable.smiley);
+
+        //Change the default Toggle Icon
+        //emojIcon.setIconsIds(R.drawable.ic_action_keyboard, R.drawable.smileys);
+
         emojIcon.setKeyboardListener(new EmojIconActions.KeyboardListener() {
             @Override
             public void onKeyboardOpen() {
-                Log.e(TAG, "Keyboard opened!");
+                Log.e(TAG, "Keyboard is Opened!");
             }
 
             @Override
             public void onKeyboardClose() {
-                Log.e(TAG, "Keyboard closed");
+                Log.e(TAG, "Keyboard is Closed");
             }
         });
 
@@ -55,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
